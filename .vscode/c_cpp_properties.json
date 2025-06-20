@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/include",
+                //"/home/rsultano/soft/geant4/geant4-v11.2.1-install/include/Geant4",
+                //"/home/rsultano/soft/geant4/geant4-v11.2.1-install/include",
+                "/home/rsultano/soft/geant4/geant4-v11.2.1/source/**",
+                "/home/rsultano/soft/geant4/geant4-v11.2.1/source/run/src",
+                "/home/rsultano/soft/geant4/geant4-v11.2.1/source/run/include"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json"
+        }
+    ],
+    "version": 4
+} 
