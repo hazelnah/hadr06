@@ -9,10 +9,10 @@
 # - To use the alternative Wendt fission model:
 #/process/had/particle_hp/use_Wendt_fission_model true
 #
-/control/verbose 2
-/run/verbose 1
+#/control/verbose 2
+#/run/verbose 1
 #
-/testhadr/det/setIsotopeMat O16 8 16 0.000000 g/cm3
+/testhadr/det/setIsotopeMat U235 92 235 19.5 g/cm3
 /testhadr/det/setRadius 5 cm
 #
 /run/initialize
@@ -20,9 +20,9 @@
 # Set a very high time threshold to allow all decays to happen
 /process/had/rdm/thresholdForVeryLongDecayTime 1.0e+60 year
 #
-/control/execute vis.mac
+#/control/execute vis.mac
 #
 /gun/particle neutron
 /gun/energy 2 MeV
 #
-/run/beamOn 1
+/run/beamOn 1000

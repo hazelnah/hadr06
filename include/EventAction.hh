@@ -46,7 +46,7 @@ class EventAction : public G4UserEventAction
 
   public:
     void BeginOfEventAction(const G4Event*) override;
-    void   EndOfEventAction(const G4Event*) override;
+    void   EndOfEventAction(const G4Event* event) override;
     
     void AddEdep (G4double Edep);
     void AddEflow(G4double Eflow);          

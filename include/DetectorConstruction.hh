@@ -82,11 +82,11 @@ class DetectorConstruction : public G4VUserDetectorConstruction
      G4VPhysicalVolume* fPWorld = nullptr;
                              
      G4LogicalVolume*   logicDetector = nullptr;
-     G4double           fDetectorSizeX = 50.*cm;
-     G4double           fDetectorSizeY = 50.*cm;
-     G4double           fDetectorSizeZ = 5*cm;
-     G4int              fDetectorRows = 10;
-     G4int              fDetectorCols = 10;
+     G4double           fDetectorSizeX = 40.*cm;
+     G4double           fDetectorSizeY = 40.*cm;
+     G4double           fDetectorSizeZ = 2*cm;
+     G4int              fDetectorRows = 20;
+     G4int              fDetectorCols = 20;
 
      DetectorMessenger* fDetectorMessenger = nullptr;
 

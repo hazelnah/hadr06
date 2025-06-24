@@ -55,7 +55,11 @@ class Run : public G4Run
     void ParticleCount(G4String, G4double, G4double); 
     void SumEnergies (G4double edep, G4double eflow, G4double etot);
     void ParticleFlux(G4String, G4double); 
-                          
+
+   	void SetEventTime(G4double t);
+    G4double CalcEventTime();
+    G4double GetEventTime();
+
     void Merge(const G4Run*) override;
     void EndOfRun();     
    
@@ -85,9 +89,17 @@ class Run : public G4Run
     std::map<G4String,G4int>        fProcCounter;
     std::map<G4String,ParticleData> fParticleDataMap1;                    
     std::map<G4String,ParticleData> fParticleDataMap2;
+    G4double  t0 = 0.;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+inline void Run::SetEventTime(G4double t){t0 = t;}
 
+inline G4double Run::CalcEventTime(){
+	t0=t0+G4RandGauss::shoot(1e-5, 5e-6); // gaussian dT with sigma = 1e-5 sec
+  return t0;
+}
+
+inline G4double Run::GetEventTime() {return t0;}
 #endif
 

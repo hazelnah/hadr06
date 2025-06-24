@@ -1,7 +1,7 @@
 #include "MySensitiveDetector.hh"
-#include "RunData.hh"
+#include "Run.hh"
 
-const bool gDebug = true;
+const bool gDebug = false;
 
 MySensitiveDetector::MySensitiveDetector(G4String name) : G4VSensitiveDetector(name)
 {
@@ -45,10 +45,10 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhis
     const G4Event * event = G4RunManager::GetRunManager()->GetCurrentEvent();
     G4int evt = event->GetEventID();
 
-    auto runData = static_cast<RunData*>
+    auto run = static_cast<Run*>
         (G4RunManager::GetRunManager()->GetNonConstCurrentRun());
-    // G4double hitTime=runData->GetEventTime() + preStepPoint->GetGlobalTime();
-    G4double hitTime=runData->GetEventTime() + track->GetLocalTime();
+    // G4double hitTime=run->GetEventTime() + preStepPoint->GetGlobalTime();
+    G4double hitTime=run->GetEventTime() + track->GetLocalTime();
     
     G4AnalysisManager *analysis = G4AnalysisManager::Instance();
     if (gDebug) G4cout << "Detector::ProcessHits 5 "<< G4endl;

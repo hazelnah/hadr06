@@ -63,7 +63,7 @@ void EventAction::AddEflow(G4double Eflow)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void EventAction::EndOfEventAction(const G4Event*)
+void EventAction::EndOfEventAction(const G4Event* event)
 {
   Run* run = static_cast<Run*>(
              G4RunManager::GetRunManager()->GetNonConstCurrentRun());
@@ -72,7 +72,22 @@ void EventAction::EndOfEventAction(const G4Event*)
   run->SumEnergies(fTotalEnergyDeposit,fTotalEnergyFlow, totalEnergy);                            
   G4AnalysisManager::Instance()->FillH1(1,fTotalEnergyDeposit);
   G4AnalysisManager::Instance()->FillH1(3,fTotalEnergyFlow);
-  G4AnalysisManager::Instance()->FillH1(24,totalEnergy);    
+  G4AnalysisManager::Instance()->FillH1(24,totalEnergy); 
+
+  // Calculate event time. Event rate is defined in Run::CalcEventTime
+  G4double t0 = run->CalcEventTime(); // global t0 is changed in Run
+  G4int evtID = event->GetEventID();
+  G4AnalysisManager *man = G4AnalysisManager::Instance(); 
+  if (event->GetPrimaryVertex(0) != nullptr)
+  {
+      man->FillNtupleIColumn(1, 0, evtID);
+      man->FillNtupleDColumn(1, 1, event->GetPrimaryVertex(0)->GetX0());
+      man->FillNtupleDColumn(1, 2, event->GetPrimaryVertex(0)->GetY0());
+      man->FillNtupleDColumn(1, 3, event->GetPrimaryVertex(0)->GetZ0());
+      man->FillNtupleDColumn(1, 4, t0);
+      // man->FillNtupleDColumn(2, 5, dT);
+      man->AddNtupleRow(1);
+  }   
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

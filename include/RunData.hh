@@ -22,7 +22,7 @@ private:
 inline void RunData::SetEventTime(G4double t){t0 = t;}
 
 inline G4double RunData::CalcEventTime(){
-	t0=t0+G4RandGauss::shoot(0., 10e-5); // gaussian dT with sigma = 10e-5 sec
+	t0=t0+G4RandGauss::shoot(1e-5, 5e-6); // gaussian dT with sigma = 1e-5 sec
   return t0;
 }
 

@@ -88,8 +88,8 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   fParticleGun->GeneratePrimaryVertex(anEvent);
 
   G4AnalysisManager* analysis = G4AnalysisManager::Instance();
-  analysis->FillH3(0, x/cm, y/cm, z/cm);
-// G4cout << "Primary particle position: x=" << x << " cm, y=" << y << " cm, z=" << z/cm << " cm" << G4endl;
+  analysis->FillH3(0, x/cm, y/cm, z/cm); // back to mm
+  // G4cout << "Primary particle position: y=" << y << " cm, y*mm=" << y*mm << " mm, cm=" << cm << " mm=" << mm << G4endl;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
