@@ -96,7 +96,8 @@ class Run : public G4Run
 inline void Run::SetEventTime(G4double t){t0 = t;}
 
 inline G4double Run::CalcEventTime(){
-	t0=t0+G4RandGauss::shoot(1e-5, 5e-6); // gaussian dT with sigma = 1e-5 sec
+  //3*e16 актов деления в секунду для 1МВт
+	t0=t0+G4RandGauss::shoot(1e-4, 1e-5); // in ps. 1e7 decay in 1 ns. gaussian dT
   return t0;
 }
 

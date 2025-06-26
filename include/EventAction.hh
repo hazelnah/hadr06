@@ -45,15 +45,15 @@ class EventAction : public G4UserEventAction
    ~EventAction() override = default;
 
   public:
-    void BeginOfEventAction(const G4Event*) override;
-    void   EndOfEventAction(const G4Event* event) override;
+    void  BeginOfEventAction(const G4Event* event) override;
+    void  EndOfEventAction(const G4Event* event) override;
     
-    void AddEdep (G4double Edep);
-    void AddEflow(G4double Eflow);          
+    void  AddEdep (G4double Edep);
+    void  AddEflow(G4double Eflow);          
                 
   private:
-    G4double fTotalEnergyDeposit = 0.;
-    G4double fTotalEnergyFlow = 0.;   
+    G4double  fTotalEnergyDeposit = 0.;
+    G4double  fTotalEnergyFlow = 0.;   
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

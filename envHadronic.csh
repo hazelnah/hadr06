@@ -19,3 +19,6 @@ unsetenv G4CASCADE_USE_PRECOMPOUND
 env |grep G4NEUTRONHP
 env |grep G4PHP
 env |grep G4CASCADE
+
+# Add Geant4 source to PATH for IDE builds
+setenv PATH "/home/rsultano/soft/geant4/geant4-v11.2.1/source/:$PATH"
