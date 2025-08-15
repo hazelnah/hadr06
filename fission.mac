@@ -15,6 +15,7 @@
 /testhadr/det/setIsotopeMat U235 92 235 19.5 g/cm3
 /testhadr/det/setRadius 5 cm
 #
+/run/numberOfThreads 7
 /run/initialize
 #
 # Set a very high time threshold to allow all decays to happen
@@ -25,4 +26,4 @@
 /gun/particle neutron
 /gun/energy 2 MeV
 #
-/run/beamOn 1000
+/run/beamOn 1000000

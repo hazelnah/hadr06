@@ -48,12 +48,12 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhis
     auto run = static_cast<Run*>
         (G4RunManager::GetRunManager()->GetNonConstCurrentRun());
     // G4double hitTime=run->GetEventTime() + preStepPoint->GetGlobalTime();
-    G4double hitTime=run->GetEventTime()/ps + track->GetLocalTime()/ps;
+    G4double hitTime=run->GetEventTime() + track->GetLocalTime(); //ns
     
     G4AnalysisManager *analysis = G4AnalysisManager::Instance();
     if (gDebug) G4cout << "Detector::ProcessHits 5 "<< G4endl;
-    // G4cout << "EventTime: " << run->GetEventTime()/ps << " ps, " << ps << " ,"
-    //        << "LocalTime: " << track->GetLocalTime()/ps << " ps.  "<< ns << " ," << G4endl;
+    // G4cout << "EventTime: " << run->GetEventTime() << " ns, " << ps << " ,"
+    //        << "LocalTime: " << track->GetLocalTime() << " ns.  "<< ns << " ," << G4endl;
 
     analysis->FillNtupleIColumn(0, 0, evt);
     analysis->FillNtupleDColumn(0, 1, posPart[0]);

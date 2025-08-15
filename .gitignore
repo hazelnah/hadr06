@@ -1,4 +1,6 @@
 build/
 .vscode/
+datasetreg/
+TMVAReg.root
 envHadronic.sh
 envHadronic.csh

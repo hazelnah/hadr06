@@ -289,6 +289,7 @@ void Run::EndOfRun()
 	 	   
   //particles at creation
   //
+ /*
  if (fParticleDataMap1.size() > 0) {       
   G4cout << "\n List of particles at creation :"
          << G4endl;
@@ -311,7 +312,7 @@ void Run::EndOfRun()
     else G4cout << "\tstable" << G4endl;	              
   }
  }
-   
+ */
                                 
  //emerging particles
  //
