@@ -67,6 +67,7 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhis
     analysis->FillNtupleDColumn(0, 9, posDetector[1]);
     analysis->FillNtupleDColumn(0, 10, posDetector[2]);
     analysis->FillNtupleDColumn(0, 11, hitTime);
+    analysis->FillNtupleDColumn(0, 12, event->GetPrimaryVertex(0)->GetZ0());
     analysis->AddNtupleRow(0);
     
     //if (track->GetCreatorProcess()->GetProcessName() == "RadioactiveDecay")

@@ -79,11 +79,15 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
            uz = cosTheta;
 
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(ux,uy,uz));
-  G4double xM = 1.*cm, yM = 2.*cm, zM = 3.*cm;  // mean position
+  G4double xM = 3.*cm, yM = 2.*cm, zM = 3.*cm;  // mean position
   G4double dx = 0.03*cm, dy = 0.05*cm, dz = 0.07*cm;  // sigma
   G4double x = G4RandGauss::shoot(xM, dx);
   G4double y = G4RandGauss::shoot(yM, dy);
   G4double z = G4RandGauss::shoot(zM, dz);
+
+  // G4double x = -5.*cm + 10.*cm*G4UniformRand();
+  // G4double y = -5.*cm + 10.*cm*G4UniformRand();
+  // G4double z = -5.*cm + 10.*cm*G4UniformRand();
   fParticleGun->SetParticlePosition(G4ThreeVector(x,y,z));
   fParticleGun->GeneratePrimaryVertex(anEvent);
 

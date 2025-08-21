@@ -77,7 +77,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
      G4Material*        fMaterial = nullptr;
      G4LogicalVolume*   fLAbsor = nullptr;
      
-     G4double           fWorldSize = 0.;
+     G4double           fWorldSize = 100.*cm;
      G4Material*        fWorldMat = nullptr;
      G4VPhysicalVolume* fPWorld = nullptr;
                              
@@ -85,6 +85,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
      G4double           fDetectorSizeX = 40.*cm;
      G4double           fDetectorSizeY = 40.*cm;
      G4double           fDetectorSizeZ = 2*cm;
+     G4double           fDetectorZ = 13*cm;
      G4int              fDetectorRows = 20;
      G4int              fDetectorCols = 20;
 

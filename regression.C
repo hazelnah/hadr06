@@ -86,8 +86,7 @@ void regression( TString myMethodList = "" )
 	dataloader->AddVariable( "fHitX", "Hit X", "units", 'F' ); //variable /*Particles/fHitX*/
 	dataloader->AddVariable( "fHitY", "Hit Y", "units", 'F' ); //variable /*Particles/fHitY*/
 	dataloader->AddVariable( "fHitT", "Hit T", "units", 'F' ); //variable /*Particles/fHitT*/
-	dataloader->AddTarget( "fZ" ); //target
-	// dataloader->AddTarget( "Source/fZ" ); //target
+	dataloader->AddTarget( "fVrtxZ" ); //target
 
    TFile *input(0);
    TString fname = "./build/Hadr06_neutrons.root";
@@ -107,7 +106,7 @@ void regression( TString myMethodList = "" )
     // global event weights per tree (see below for setting event-wise weights)
    Double_t regWeight  = 1.0;
 	dataloader->AddRegressionTree( regTree1, regWeight );
-   // dataloader->AddRegressionTree( regTree2, regWeight );
+   // dataloader->AddTargetTree( regTree2, regWeight );
 
 	//it is possible to add selection cuts for variables.
 

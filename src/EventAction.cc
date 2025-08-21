@@ -34,6 +34,7 @@
 
 #include "Run.hh"
 #include "HistoManager.hh"
+#include "RunData.hh"
 
 #include "G4Event.hh"
 #include "G4RunManager.hh"
@@ -61,6 +62,8 @@ void EventAction::BeginOfEventAction(const G4Event* event)
       man->FillNtupleDColumn(1, 4, t0);
       // man->FillNtupleDColumn(2, 5, dT);
       man->AddNtupleRow(1);
+
+
   }   
 }
 

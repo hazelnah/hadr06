@@ -55,7 +55,7 @@
 DetectorConstruction::DetectorConstruction()
 {
   fRadius = 30*cm;
-  fWorldSize = 3.*fRadius;
+  // fWorldSize = 3.*fRadius;
   DefineMaterials();
   SetMaterial("Water_ts");  
   fDetectorMessenger = new DetectorMessenger(this);
@@ -211,7 +211,13 @@ void DetectorConstruction::CreateDetectorWall(G4LogicalVolume* logicWorld)
   logicDetector = new G4LogicalVolume(solidDetector, fWorldMat, "logicDetector");
   G4RotationMatrix * rotM = new G4RotationMatrix();
   rotM->rotateY(90*deg);
-  
+
+  if (fDetectorZ > fWorldSize / 2.) {
+    G4Exception("DetectorConstruction::CreateDetectorWall",
+                "DCW001", FatalException,
+                ("fDetectorZ (" + std::to_string(fDetectorZ) + ") more than half the world size (fWorldSize/2) (" + std::to_string(fWorldSize/2) + "). Aborting construction.").c_str());
+  }
+
   G4PVPlacement*     physDetector = nullptr;
   for(G4int i = 0; i < fDetectorRows; i++)
   {
@@ -220,7 +226,8 @@ void DetectorConstruction::CreateDetectorWall(G4LogicalVolume* logicWorld)
         physDetector = new G4PVPlacement(0, 
                         G4ThreeVector(-fDetectorSizeX/2. + (i+1./2.)*(fDetectorSizeX/fDetectorRows), 
                           -fDetectorSizeY/2. + (j+1./2.)*(fDetectorSizeY/fDetectorCols), 
-                          fWorldSize/2. - fDetectorSizeZ), 
+                          // fWorldSize/2. - fDetectorSizeZ), 
+                          fDetectorZ), 
                         logicDetector, "physDetector", logicWorld, false, j+i*fDetectorCols, true);
         // rotM = physDetector2->GetRotation();
         // rotM->rotateX(90*deg);
@@ -269,7 +276,7 @@ void DetectorConstruction::SetRadius(G4double value)
   fDetectorSizeX = value;
   fDetectorSizeY = value;
   fDetectorSizeZ = 0.01*cm;
-  fWorldSize = 3.*fRadius;
+  // fWorldSize = 3.*fRadius;
   G4RunManager::GetRunManager()->ReinitializeGeometry();
 }
 

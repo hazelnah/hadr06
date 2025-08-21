@@ -116,6 +116,7 @@ void HistoManager::Book()
   analysisManager->CreateNtupleDColumn("fHitY");
   analysisManager->CreateNtupleDColumn("fHitZ");
   analysisManager->CreateNtupleDColumn("fHitT");
+  analysisManager->CreateNtupleDColumn("fVrtxZ");
   analysisManager->FinishNtuple(0);
 
   

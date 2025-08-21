@@ -25,10 +25,11 @@ void regression_application(TString myMethodList = "")
    std::map<std::string,int> Use;
 
    // Select methods to use (same as in training)
-   Use["PDEFoam"] = 1;
-   Use["KNN"] = 1;
+   Use["MLP"] = 1;
+   Use["PDEFoam"] = 0;
+   Use["KNN"] = 0;
    Use["LD"] = 1;
-   Use["BDTG"] = 1;
+   Use["BDT"] = 1;
 
    std::cout << std::endl;
    std::cout << "==> Start regression application" << std::endl;
@@ -74,14 +75,16 @@ void regression_application(TString myMethodList = "")
    TH1* hists[100];
    Int_t nhists = -1;
    for (std::map<std::string,int>::iterator it = Use.begin(); it != Use.end(); it++) {
-      TH1* h = new TH1F(it->first.c_str(), TString(it->first) + " method", 100, -100, 600);
+      TH1* h = new TH1F(it->first.c_str(), TString(it->first) + " method", 200, -100, 100);
       if (it->second) hists[++nhists] = h;
    }
    nhists++;
 
    // Open input file
    TFile *input(0);
-   TString fname = "./build/output0.root";
+   // TString fname = "./build/Hadr06_neutrons.root";
+   // TString fname = "./build/data1/1/Particles_data.root";
+   TString fname = "./build/data1/3/Hadr06_neutrons.root";
    if (!gSystem->AccessPathName(fname)) {
       input = TFile::Open(fname);
    }

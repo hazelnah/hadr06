@@ -14,7 +14,7 @@ public:
 	void SetEventTime(G4double t);
 	G4double CalcEventTime();
 	G4double GetEventTime();
-
+	
 private:
 	G4double t0 = 0.;
 };
